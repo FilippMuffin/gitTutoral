@@ -1,0 +1,24 @@
+--ÑÎÇÄÀÍÈÅ ÑÒÐÓÊÒÓÐÛ ÁÄ:
+
+CREATE TABLE `authors` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `name` varchar(256) NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8
+
+CREATE TABLE `bibl` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `book` varchar(256) NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8
+
+CREATE TABLE `card_file` (
+ `book_id` int(11) DEFAULT NULL,
+ `name_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+-- ÇÀÏÐÎÑ:
+SELECT `bibl`.`book` FROM `card_file` 
+join `bibl` on (`bibl`.`id` = `book_id`) 
+join `authors` on (`authors`.`id` = `name_id`) 
+HAVING COUNT(*)>3 ;
